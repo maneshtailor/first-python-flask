@@ -9,3 +9,8 @@ then in the Flask environment, run:
 >python3 app.py
 
 
+
+Todo: I intend to deploy to AWS Lightsail 
+https://aws.amazon.com/getting-started/hands-on/serve-a-flask-app/
+
+
