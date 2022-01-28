@@ -31,20 +31,26 @@ docker run -p 5000:5000 flask-container
 Goto: http://localhost:5000/
 
 5) Create a container service on AWS Lightsail
-aws lightsail create-container-service --service-name flask-service \ --power small --scale 1
+aws lightsail create-container-service --service-name flask-service --power small --scale 1
 
 6) Check that the container is ACTIVE:
 aws lightsail get-container-services --service-name flask-service
 
-7) Get the 'ID'/count/X from the message/payload that looks like:
+You can see your lightsail containers here:
+https://lightsail.aws.amazon.com/ls/webapp/home/containers 
+
+7) Push the application container to Lightsail
+aws lightsail push-container-image --service-name flask-service --label flask-container --image flask-container
+
+8) Get the 'ID'/count/X from the message/payload that looks like:
 Refer to this image as ":flask-service.flask-container.X" in deployments.
 
-8) Update the container.json file to include the X in the config from the last step
+9) Update the container.json file to include the X in the config from the last step
 
-9) Deploy the container 
+10) Deploy the container 
 aws lightsail create-container-service-deployment --service-name flask-service --containers file://containers.json --public-endpoint file://public-endpoint.json
 
-10) Check its Running:
+11) Check its Running:
 aws lightsail get-container-services --service-name flask-service
 
-11) Hit the URL you see in that 'Running' payload
+12) Hit the URL you see in that 'Running' payload
